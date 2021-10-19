@@ -1,3 +1,4 @@
+import { IJSONApp } from '@/models/appHelper'
 export namespace NHeader {
   export type IData = {
     name: string
@@ -9,7 +10,10 @@ export namespace NHeader {
   }
 
   export interface IView {
+    /** 导出 */
     export (): void
+    /** 导入 */
+    import (data: IJSONApp): void
     /** 数据 */
     data: IData
   }

@@ -1,3 +1,4 @@
+import { IJSONApp } from '@/models/appHelper'
 import store from '@/store'
 import { NHeader } from './types'
 
@@ -9,6 +10,10 @@ export default class HeaderService implements NHeader.IView, NHeader.IService {
 
   constructor (data?: Partial<NHeader.IData>) {
     this.setData(data === undefined ? {} : data)
+  }
+
+  import (data: IJSONApp): void {
+    throw new Error('Method not implemented.')
   }
 
   /** 获取默认数据 */
