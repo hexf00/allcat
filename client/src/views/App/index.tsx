@@ -6,7 +6,7 @@ import ElementUIIndex from '@/themes/element-ui'
 import NoUIIndex from '@/themes/no-ui'
 
 import AppService from './service'
-import { IApp, IAppData } from './types'
+import { IAppData, NApp } from './types'
 
 @Component
 export default class App extends Vue {
@@ -14,7 +14,7 @@ export default class App extends Vue {
     value: IAppData
   }
 
-  service: IApp = new AppService()
+  service: NApp.IView = new AppService()
 
   theme = 'element-ui'
 

@@ -3,11 +3,11 @@ import WsManager from '@/plugins/WsManager'
 import { ApiService } from '@/services/Api/service'
 import { WsService } from '@/services/Ws/service'
 import { IWs } from '@/services/Ws/types'
-import { IApp, IAppData } from './types'
+import { NApp } from './types'
 import appHelper from '@/models/appHelper'
 
-export default class AppService implements IApp {
-  data!: IAppData
+export default class AppService implements NApp.IView {
+  data!: NApp.IData
 
   /** 动态注册的函数 */
   callbacks = {}
@@ -17,22 +17,22 @@ export default class AppService implements IApp {
   apiService = new ApiService(this.app)
   wsService: IWs = new WsService(this.wsManager, this.apiService)
 
-  constructor (data?: Partial<IAppData>) {
+  constructor () {
     store.currentApp = this.app
-    this.setData(data === undefined ? {} : data)
-
   }
 
   /** 获取默认数据 */
-  private getDefaultData (): IAppData {
-    return {}
+  private getDefaultData (): NApp.IData {
+    return {
+      data: {},
+    }
   }
 
   getData () {
     return this.data
   }
 
-  setData (data: Partial<IAppData>) {
+  setData (data: Partial<NApp.IData>) {
     this.data = { ...this.getDefaultData(), ...data }
   }
 }
