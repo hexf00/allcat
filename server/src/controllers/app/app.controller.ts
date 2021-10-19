@@ -1,6 +1,6 @@
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
-import { AppService } from './app.service';
-import Auth from './interceptors/Auth.class';
+import { AppService } from '@/app.service';
+import Auth from '@/interceptors/Auth.class';
 
 @Controller()
 export class AppController {

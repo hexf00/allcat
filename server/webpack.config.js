@@ -1,14 +1,22 @@
 const webpack = require('webpack');
+const { resolve } = require('path');
 
 module.exports = function (options) {
   const { plugins, ...config } = options;
   return {
     ...config,
+    resolve: {
+      /** js是必填 */
+      extensions: ['.ts', '.tsx', '.js'],
+      alias: {
+        '@': resolve('src'),
+      },
+    },
     externals: [],
     plugins: [
       ...plugins,
       new webpack.IgnorePlugin({
-        checkResource(resource) {
+        checkResource (resource) {
           const lazyImports = [
             '@nestjs/microservices',
             'cache-manager',
