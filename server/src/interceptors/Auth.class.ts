@@ -17,7 +17,7 @@ export default class Auth<T> implements NestInterceptor<T, Response<T>> {
     } else {
       return next.handle().pipe(map((data) => {
         return {
-          statusCode: 200,
+          code: 200,
           data
         }
       }));
