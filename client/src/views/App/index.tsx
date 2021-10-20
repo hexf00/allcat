@@ -1,7 +1,7 @@
 import { CreateElement } from 'vue'
 import { Component, Vue } from 'vue-property-decorator'
 
-import ElementUIIndex from '@/themes/element-ui'
+import Index from '@/themes/element-ui'
 
 import AppService from './app.service'
 import { IAppData, NApp } from './types'
@@ -25,7 +25,7 @@ export default class App extends Vue {
 
   render (h: CreateElement) {
     return (
-      <ElementUIIndex app={this.service.app}></ElementUIIndex>
+      <Index app={this.service.app} />
     )
   }
 }
