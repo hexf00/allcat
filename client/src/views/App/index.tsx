@@ -3,7 +3,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
 import ElementUIIndex from '@/themes/element-ui'
 
-import AppService from './service'
+import AppService from './app.service'
 import { IAppData, NApp } from './types'
 
 @Component
