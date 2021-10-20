@@ -3,12 +3,12 @@ import { CreateElement } from 'vue'
 import style from './FieldItem.module.scss'
 import { IJSONTable } from '@/types/IJSONTable'
 import { IView } from '@/models/View/View'
-import EyeSwitch from '@/themes/element-ui/components/base/EyeSwitch/EyeSwitch'
+import EyeSwitch from '@/views/Index/components/base/EyeSwitch/EyeSwitch'
 import { MessageBox } from 'element-ui'
 import fieldHelper from '@/models/Table/fieldHelper'
 import { IJSONTableField } from '@/types/IJSONTableField'
 import { IJSONViewField } from '@/models/View/ViewField'
-import Icon from '@/themes/element-ui/components/base/Icon/Icon'
+import Icon from '@/views/Index/components/base/Icon/Icon'
 
 export interface IFieldItem {
   /** 唯一标识符,可能el-tree会用来判断dom复用 */

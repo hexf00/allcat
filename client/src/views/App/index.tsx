@@ -1,7 +1,7 @@
 import { CreateElement } from 'vue'
 import { Component, Vue } from 'vue-property-decorator'
 
-import Index from '@/themes/element-ui'
+import Index from '@/views/Index'
 
 import AppService from './app.service'
 import { IAppData, NApp } from './types'

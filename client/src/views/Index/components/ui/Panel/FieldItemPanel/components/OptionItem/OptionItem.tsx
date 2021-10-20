@@ -1,7 +1,7 @@
 import { CreateElement, RenderContext } from 'vue'
 import { ISelectOption } from '@/models/Table/fieldHelper'
 import style from './index.module.scss'
-import Icon from '@/themes/element-ui/components/base/Icon/Icon'
+import Icon from '@/views/Index/components/base/Icon/Icon'
 import ColorPicker from '../ColorPicker/ColorPicker'
 
 type Props = {
