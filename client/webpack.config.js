@@ -8,6 +8,7 @@ module.exports = function (env) {
   return {
     devServer: {
       hot: true, //启用热更新，必须，相当于--hot
+      host: '0.0.0.0',
       port: 5921, //端口
     },
     entry: './src/index.tsx',
