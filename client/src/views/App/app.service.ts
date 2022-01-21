@@ -5,8 +5,11 @@ import { WsService } from '@/services/Ws/service'
 import { IWs } from '@/services/Ws/types'
 import { NApp } from './types'
 import appHelper from '@/models/appHelper'
+import DataService from '@/services/Data/Data.service'
+import ConfigService from '../Config/service'
+import { Notification } from 'element-ui'
 
-export default class AppService implements NApp.IView {
+export default class AppService implements NApp.IView, NApp.IService {
   data!: NApp.IData
 
   /** 动态注册的函数 */
@@ -17,14 +20,18 @@ export default class AppService implements NApp.IView {
   apiService = new ApiService(this.app)
   wsService: IWs = new WsService(this.wsManager, this.apiService)
 
+  dataService = new DataService()
+
   constructor () {
-    store.currentApp = this.app
+    this.init()
   }
+
+  config = new ConfigService()
 
   /** 获取默认数据 */
   private getDefaultData (): NApp.IData {
     return {
-      data: {},
+      app: {},
     }
   }
 
@@ -34,5 +41,22 @@ export default class AppService implements NApp.IView {
 
   setData (data: Partial<NApp.IData>) {
     this.data = { ...this.getDefaultData(), ...data }
+  }
+
+  init () {
+    const config = this.config.load()
+
+    if (!config.host) {
+      Notification.warning('请先配置服务端信息')
+    }
+
+    store.currentApp = this.app
+    this.wsService.init()
+
+    this.dataService.load('app')
+  }
+
+  destroy (): void {
+    this.wsService.unset()
   }
 }

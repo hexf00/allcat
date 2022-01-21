@@ -2,11 +2,14 @@ import 'xe-utils'
 import 'vxe-table/lib/style.css'
 
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
 
 import '@/themes/element-ui/element-ui'
-
-import App from './views/App'
+import router from './router'
 
 new Vue({
-  render: (h) => h(App),
+  router,
+  render: (h) => <router-view />,
 }).$mount('#app')

@@ -1,4 +1,4 @@
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { CreateElement } from 'vue'
 
 import ViewMenu from '@/views/Index/components/ui/ViewMenu/ViewMenu'
@@ -7,22 +7,19 @@ import TableView from '@/views/Index/components/ui/TableView'
 import style from './index.module.scss'
 import IndexService from './index.service'
 import store from '@/store'
-import { IJSONApp } from '@/models/appHelper'
 import Header from './components/Header'
 import { NLayout } from './types'
 
 @Component
 export default class extends Vue {
 
-  $props!: {
-    app: IJSONApp
-  }
-
-  @Prop() app!: IJSONApp
-
-  service: NLayout.IView = new IndexService(this.app)
+  service: NLayout.IView = new IndexService(store.currentApp!)
 
   store = store
+
+  beforeRouteEnter () {
+    console.log('beforeRouteEnter', this)
+  }
 
   beforeDestroy () {
     this.service.destroy()
